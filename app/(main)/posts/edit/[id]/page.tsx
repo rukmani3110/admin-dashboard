@@ -33,16 +33,11 @@ const formSchema = z.object({
   }),
 });
 
-interface PostEditPageProps {
-  params: {
-    id: string;
-  };
-}
 
-const PostEditPage = ({ params }: PostEditPageProps) => {
+const PostEditPage = ({ params }: any) => {
   const { toast } = useToast();
 
-  const post = posts.find((post) => post.id === params.id);
+  const post = posts.find((post) => post.id === params?.id);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
